@@ -65,6 +65,10 @@ zstyle ':completion:*:(ssh|scp|rsync|ftp|sftp):*:hosts' ignored-patterns \
 	'*(.|:)*' loopback broadcasthost
 unset _ssh_config
 
+# Kill format
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,tty,s,bsdtime,cmd'
+
 # conda autocomplete settings
 zstyle ":conda_zsh_completion:*" use-groups true
 zstyle ":conda_zsh_completion:*" show-unnamed true
