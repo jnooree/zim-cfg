@@ -139,7 +139,12 @@ alias glogb="git log --oneline --decorate --graph --branches"
 alias gsa="git submodule add"
 alias gcq="git commit --quiet"
 
-alias tar='tar --disable-copyfile --exclude '\''.DS_Store'\'' --exclude '\''.git*'\'' --exclude '\''*.log'\'
+if tar --disable-copyfile &>/dev/null; then
+	_tar_alias='tar --disable-copyfile'
+fi
+alias tar="${_tar_alias:-tar} --exclude '.DS_Store' --exclude '.git*' --exclude '*.log'"
 alias taro='command tar'
+unset _tar_alias
+
 alias top=htop
 alias topo='command top'
