@@ -119,7 +119,12 @@ alias mkdir='nocorrect mkdir'
 alias mv='nocorrect mv'
 alias su='nocorrect su'
 alias sudo='nocorrect sudo'
+
 alias env="env | grep -v '^LESS_TERMCAP'"
+if alias chmod &>/dev/null; then
+	alias chmod='chmod --preserve-root'
+	alias chown='chown --preserve-root'
+fi
 
 eval "old$(alias ls)"
 alias ls="$oldls -vF"
