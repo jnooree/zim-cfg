@@ -10,7 +10,7 @@ if [[ -r ~/.iterm2/it2copy ]]; then
 
     # Copy the absolute path without resolving symlinks
     # If clipcopy fails, exit the function with an error
-    ~/.iterm2/it2copy <<<"$file" || return 1
+    print -n "${file:a}" | ~/.iterm2/it2copy || return 1
 
     echo ${(%):-"%B${file:a}%b copied to clipboard."}
   }
