@@ -16,7 +16,10 @@ setopt appendhistory extendedhistory histexpiredupsfirst histfindnodups \
 unsetopt nocaseglob
 
 # Keybindings
+bindkey "^K" kill-line
+bindkey "^[d" kill-word
 bindkey "^U" backward-kill-line
+bindkey "^_" undo
 bindkey "^[_" redo
 
 # Better "word" detection
