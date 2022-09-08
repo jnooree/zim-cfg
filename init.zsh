@@ -56,7 +56,7 @@ _fzf_compgen_dir() {
 }
 
 # Better SSH/Rsync/SCP Autocomplete
-zstyle -s ':completion:*:hosts' hosts _ssh_config
+zstyle -a ':completion:*:hosts' hosts _ssh_config
 if [[ -r /etc/hosts ]]; then
 	_ssh_config+=($(pcregrep -o1 '^\s*[\.\d]+\s+(\S+)' /etc/hosts))
 fi
