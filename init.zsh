@@ -9,8 +9,8 @@ setopt completeinword correctall noflowcontrol interactivecomments \
 	longlistjobs printexitvalue transientrprompt
 setopt autocd autopushd pushdignoredups pushdminus
 setopt cshnullglob extendedglob kshglob numericglobsort rematchpcre
-setopt appendhistory extendedhistory histexpiredupsfirst histfindnodups \
-	histignorealldups histignoredups histignorespace histnostore \
+setopt appendhistory extendedhistory histexpiredupsfirst histfcntllock \
+	histfindnodups histignorealldups histignoredups histignorespace histnostore \
 	histreduceblanks histsavenodups histverify sharehistory
 
 unsetopt nocaseglob
