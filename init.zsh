@@ -33,6 +33,21 @@ ZSH_HIGHLIGHT_REGEXP[\bsudo\b]='bold,underline'
 # Autocomplete settings
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
+# Copied and modified from zim/input module
+function double-dot-expand() {
+	# Expand .. at the beginning, after space, or after any of ! " & ' / ; < > |
+	if [[ ${LBUFFER} == (|*[[:space:]!\"\&\'/\;\<\>|])../ ]]; then
+		LBUFFER+='../'
+	elif [[ ${LBUFFER} == (|*[[:space:]!\"\&\'/\;\<\>|]). ]]; then
+		LBUFFER+='./'
+	else
+		LBUFFER+='.'
+	fi
+}
+zle -N double-dot-expand
+bindkey . double-dot-expand
+bindkey -M isearch . self-insert
+
 # fzf
 export FZF_DEFAULT_COMMAND='fd -Ht f -E .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
