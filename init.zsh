@@ -62,21 +62,23 @@ export FZF_DEFAULT_OPTS='
 export FZF_COMPLETION_TRIGGER='~~'
 
 fzf_compgen_path() {
-		fd --hidden --follow --exclude ".git" . "$1"
+	fd --hidden --follow --exclude ".git" . "$1"
 }
 
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
-		fd --type d --hidden --follow --exclude ".git" . "$1"
+	fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 
 # Better SSH/Rsync/SCP Autocomplete
 zstyle -a ':completion:*:hosts' hosts _ssh_config
 if [[ -r /etc/hosts ]]; then
-	_ssh_config+=($(pcregrep -o1 '^\s*[\.\d]+\s+(\S+)' /etc/hosts))
+	_ssh_config+=($(sed -nE 's/^\s*[\.[:digit:]]+\s+(\S+)/\1/p' /etc/hosts))
 fi
 if [[ -r ~/.ssh/config ]]; then
-	_ssh_config+=($(pcregrep -io2 '^\s*host(\s+|\s*=\s*)([^\s\*]+\s*$)' ~/.ssh/config))
+	_ssh_config+=($(
+		sed -nE 's/^\s*[Hh]ost(\s+|\s*=\s*)([-_[:alnum:]]+\s*)$/\2/p' ~/.ssh/config
+	))
 fi
 zstyle ':completion:*:hosts' hosts $_ssh_config
 zstyle ':completion:*:(ssh|scp|rsync|ftp|sftp):*:hosts' ignored-patterns \
@@ -123,8 +125,8 @@ alias 8='cd -8'
 alias 9='cd -9'
 
 alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
-alias egrep='egrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
-alias fgrep='fgrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
+alias egrep='grep -E --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
+alias fgrep='grep -F --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
 
 # enable diff color if possible.
 if command diff --color /dev/null /dev/null &>/dev/null; then
@@ -147,7 +149,11 @@ if alias chmod &>/dev/null; then
 	alias chown='chown --preserve-root'
 fi
 
-eval "old$(alias ls)"
+if alias ls &>/dev/null; then
+	eval "old$(alias ls)"
+else
+	oldls='ls --group-directories-first --color=auto'
+fi
 alias ls="$oldls -vF"
 alias l='ls -lah -B'
 unset oldls
