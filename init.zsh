@@ -6,7 +6,7 @@ done
 
 # Shell options
 setopt completeinword correctall noflowcontrol interactivecomments \
-	longlistjobs printexitvalue transientrprompt
+	longlistjobs transientrprompt
 setopt autocd autopushd pushdignoredups pushdminus
 setopt cshnullglob extendedglob kshglob numericglobsort rematchpcre
 setopt appendhistory extendedhistory histexpiredupsfirst histfcntllock \
