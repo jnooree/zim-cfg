@@ -25,6 +25,11 @@ bindkey "^[_" redo
 # Better "word" detection
 WORDCHARS=''
 
+# Highlight settings
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets regexp root)
+ZSH_HIGHLIGHT_STYLES[comment]='bold,9'
+ZSH_HIGHLIGHT_REGEXP[\bsudo\b]='bold,underline'
+
 # Autocomplete settings
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
