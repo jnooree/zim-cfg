@@ -154,7 +154,7 @@ if alias ls &>/dev/null; then
 else
 	oldls='ls --group-directories-first --color=auto'
 fi
-alias ls="$oldls -vF"
+alias ls="$oldls -vF --time-style=\$'+%m-%d  %Y\n%m-%d %R'"
 alias l='ls -lah -B'
 unset oldls
 
