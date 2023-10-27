@@ -82,6 +82,12 @@ zstyle ':completion:*:(ssh|scp|rsync|ftp|sftp):*:hosts' ignored-patterns \
 	'*(.|:)*' loopback broadcasthost 'ip6-*'
 unset _hosts_all
 
+# Exclude systemd-* users
+zstyle -a ':completion:*:*:*:users' ignored-patterns _users_ign
+_users_ign+=('systemd-*')
+zstyle ':completion:*:*:*:users' ignored-patterns $_users_ign
+unset _users_ign
+
 # Kill format
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,tty,s,bsdtime,cmd'
