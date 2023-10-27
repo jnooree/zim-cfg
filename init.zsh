@@ -77,7 +77,7 @@ fi
 zstyle ':completion:*:hosts' hosts $_hosts_all
 zstyle ':completion:*:hosts' ignored-patterns \
 	'(<0-255>.)#<0-255>' '([0-9a-fA-F]#:)#[0-9a-fA-F]#' \
-		loopback broadcasthost 'ip6-*'
+	loopback broadcasthost 'ip6-*'
 zstyle ':completion:*:(ssh|scp|rsync|ftp|sftp):*:hosts' ignored-patterns \
 	'*(.|:)*' loopback broadcasthost 'ip6-*'
 unset _hosts_all
@@ -89,10 +89,10 @@ _users_ign+=(
 	man messagebus munge pollinate proxy slurm sssd statd sys syslog
 	tcpdump tftp tss usbmux uuidd www-data)
 zstyle ':completion:*:*:*:users' ignored-patterns $_users_ign
-zstyle ':completion:*:*:userdel:*:users' ignored-patterns '_*'
-zstyle ':completion:*:*:usermod:*:users' ignored-patterns '_*'
-zstyle ':completion:*:*:gpasswd:*:users' ignored-patterns '_*'
 unset _users_ign
+
+zstyle ':completion:*:*:(userdel|usermod|gpasswd):*:users' ignored-patterns \
+	'_*'
 
 # Kill format
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
