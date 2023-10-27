@@ -67,9 +67,9 @@ _fzf_compgen_dir() {
 }
 
 zstyle ':completion:*' matcher-list \
-	'm:{[:lower:][:upper:]-_}={[:upper:][:lower:]_-}' \
-	'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{[:lower:][:upper:]-_}={[:upper:][:lower:]_-}' \
-	'r:|?=** m:{[:lower:][:upper:]-_}={[:upper:][:lower:]_-}'
+	'm:{[:lower:][:upper:]-}={[:upper:][:lower:]_}' \
+	'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{[:lower:][:upper:]-}={[:upper:][:lower:]_}' \
+	'r:|?=** m:{[:lower:][:upper:]-}={[:upper:][:lower:]_}'
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
 
 # Better SSH/Rsync/SCP Autocomplete
