@@ -21,14 +21,6 @@ bindkey "^[_" redo
 # Better "word" detection
 WORDCHARS=''
 
-# Highlight settings
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets regexp root)
-ZSH_HIGHLIGHT_STYLES[comment]='bold,9'
-ZSH_HIGHLIGHT_REGEXP[\bsudo\b]='bold,underline'
-
-# Autocomplete settings
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-
 # Copied and modified from zim/input module
 function double-dot-expand() {
 	# Expand .. at the beginning, after space, or after any of ! " & ' / ; < > |
