@@ -76,9 +76,10 @@ if [[ -r ~/.ssh/config ]]; then
 fi
 zstyle ':completion:*:hosts' hosts $_hosts_all
 zstyle ':completion:*:hosts' ignored-patterns \
-	'(<0-255>.)#<0-255>' '([0-9a-fA-F]#:)#[0-9a-fA-F]#' loopback broadcasthost
+	'(<0-255>.)#<0-255>' '([0-9a-fA-F]#:)#[0-9a-fA-F]#' \
+		loopback broadcasthost 'ip6-*'
 zstyle ':completion:*:(ssh|scp|rsync|ftp|sftp):*:hosts' ignored-patterns \
-	'*(.|:)*' loopback broadcasthost
+	'*(.|:)*' loopback broadcasthost 'ip6-*'
 unset _hosts_all
 
 # Kill format
