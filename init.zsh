@@ -65,21 +65,21 @@ zstyle ':completion:*' matcher-list \
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
 
 # Better SSH/Rsync/SCP Autocomplete
-zstyle -a ':completion:*:hosts' hosts _ssh_config
+zstyle -a ':completion:*:hosts' hosts _hosts_all
 if [[ -r /etc/hosts ]]; then
-	_ssh_config+=($(sed -nE 's/^\s*[\.[:digit:]]+\s+(\S+)/\1/p' /etc/hosts))
+	_hosts_all+=($(sed -nE 's/^\s*[\.[:digit:]]+\s+(\S+)/\1/p' /etc/hosts))
 fi
 if [[ -r ~/.ssh/config ]]; then
-	_ssh_config+=($(
+	_hosts_all+=($(
 		sed -nE 's/^\s*[Hh]ost(\s+|\s*=\s*)([-_[:alnum:]]+\s*)$/\2/p' ~/.ssh/config
 	))
 fi
-zstyle ':completion:*:hosts' hosts $_ssh_config
+zstyle ':completion:*:hosts' hosts $_hosts_all
 zstyle ':completion:*:hosts' ignored-patterns \
 	'(<0-255>.)#<0-255>' '([0-9a-fA-F]#:)#[0-9a-fA-F]#' loopback broadcasthost
 zstyle ':completion:*:(ssh|scp|rsync|ftp|sftp):*:hosts' ignored-patterns \
 	'*(.|:)*' loopback broadcasthost
-unset _ssh_config
+unset _hosts_all
 
 # Kill format
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
