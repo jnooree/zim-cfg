@@ -1,11 +1,7 @@
 # Most of these came from ohmyzsh/ohmyzsh
 
-for file in "$(dirname "$0")/ohmyzsh/"*.zsh; do
-	. "$file"
-done
-
 # Shell options
-setopt completeinword correctall noflowcontrol interactivecomments \
+setopt completeinword noflowcontrol interactivecomments \
 	longlistjobs transientrprompt
 setopt autocd autopushd pushdignoredups pushdminus
 setopt cshnullglob extendedglob kshglob numericglobsort rematchpcre
@@ -13,7 +9,7 @@ setopt appendhistory extendedhistory histexpiredupsfirst histfcntllock \
 	histfindnodups histignorealldups histignoredups histignorespace histnostore \
 	histreduceblanks histsavenodups histverify sharehistory
 
-unsetopt nocaseglob
+autoload -U +X bashcompinit && bashcompinit
 
 # Keybindings
 bindkey "^K" kill-line
@@ -69,6 +65,10 @@ fzf_compgen_path() {
 _fzf_compgen_dir() {
 	fd --type d --hidden --follow --exclude ".git" . "$1"
 }
+
+# Overwrite (taken from ohmyzsh)
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]-_}={[:upper:][:lower:]_-}' 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
 
 # Better SSH/Rsync/SCP Autocomplete
 zstyle -a ':completion:*:hosts' hosts _ssh_config
@@ -135,13 +135,6 @@ fi
 
 alias md='mkdir -p'
 alias rd=rmdir
-
-alias cp='nocorrect cp'
-alias man='nocorrect man'
-alias mkdir='nocorrect mkdir'
-alias mv='nocorrect mv'
-alias su='nocorrect su'
-alias sudo='nocorrect sudo'
 
 alias env="env | grep -v '^LESS_TERMCAP'"
 if alias chmod &>/dev/null; then
