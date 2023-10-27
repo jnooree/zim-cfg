@@ -85,7 +85,7 @@ unset _hosts_all
 # Exclude systemd-* users
 zstyle -a ':completion:*:*:*:users' ignored-patterns _users_ign
 _users_ign+=(
-	'systemd-*' dhcpd fwupd-refresh gnats irc landscape list lxd
+	'systemd-*' backup dhcpd fwupd-refresh gnats irc landscape list lxd
 	man messagebus munge pollinate proxy slurm sssd statd sys syslog
 	tcpdump tftp tss usbmux uuidd www-data)
 zstyle ':completion:*:*:*:users' ignored-patterns $_users_ign
