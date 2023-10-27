@@ -66,8 +66,10 @@ _fzf_compgen_dir() {
 	fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 
-# Overwrite (taken from ohmyzsh)
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]-_}={[:upper:][:lower:]_-}' 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' matcher-list \
+	'm:{[:lower:][:upper:]-_}={[:upper:][:lower:]_-}' \
+	'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{[:lower:][:upper:]-_}={[:upper:][:lower:]_-}' \
+	'r:|?=** m:{[:lower:][:upper:]-_}={[:upper:][:lower:]_-}'
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
 
 # Better SSH/Rsync/SCP Autocomplete
