@@ -157,7 +157,7 @@ else
 	oldls='ls --group-directories-first --color=auto'
 fi
 alias ls="$oldls -vF --time-style=\$'+%m-%d  %Y\n%m-%d %R'"
-alias l='ls -lah -B'
+alias l='ll -aB'
 unset oldls
 
 alias kssh='ssh -O exit'
