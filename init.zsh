@@ -158,6 +158,7 @@ else
 fi
 alias ls="$oldls -vF --time-style=\$'+%m-%d  %Y\n%m-%d %R'"
 alias l='ll -aB'
+alias lm="l --color=always | $PAGER"
 unset oldls
 
 alias kssh='ssh -O exit'
