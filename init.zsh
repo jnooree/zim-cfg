@@ -144,6 +144,7 @@ fi
 
 alias md='mkdir -p'
 alias rd=rmdir
+alias df='df -hT -x tmpfs -x squashfs -x devtmpfs'
 
 alias env="env | grep -v '^LESS_TERMCAP'"
 if alias chmod &>/dev/null; then
