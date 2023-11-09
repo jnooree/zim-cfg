@@ -75,8 +75,8 @@ _file_ign_patterns=(
 )
 zstyle ':completion:*:files' ignored-patterns "$_file_ign_patterns[@]"
 zstyle ':completion:*:globbed-files' ignored-patterns "$_file_ign_patterns[@]"
-zstyle ':completion:*:*:(cd|ls|rm|mv|cp|scp):*:files' ignored-patterns
-zstyle ':completion:*:*:(cd|ls|rm|mv|cp|scp):*:globbed-files' ignored-patterns
+zstyle ':completion:*:*:(cd|ls|rm|mv|cp|scp|diff):*:files' ignored-patterns
+zstyle ':completion:*:*:(cd|ls|rm|mv|cp|scp|diff):*:globbed-files' ignored-patterns
 unset _file_ign_patterns
 
 # Better SSH/Rsync/SCP Autocomplete
