@@ -74,7 +74,7 @@ if [[ -r ~/.ssh/config ]]; then
 		sed -nE 's/^\s*[Hh]ost(\s+|\s*=\s*)([-_[:alnum:]]+\s*)$/\2/p' ~/.ssh/config
 	))
 fi
-zstyle ':completion:*:hosts' hosts $_hosts_all
+zstyle ':completion:*:hosts' hosts "$_hosts_all[@]"
 zstyle ':completion:*:hosts' ignored-patterns \
 	'(<0-255>.)#<0-255>' '([0-9a-fA-F]#:)#[0-9a-fA-F]#' \
 	loopback broadcasthost 'ip6-*'
@@ -88,11 +88,10 @@ _users_ign+=(
 	'systemd-*' backup dhcpd fwupd-refresh gnats irc landscape list lxd
 	man messagebus munge pollinate proxy slurm sssd statd sys syslog
 	tcpdump tftp tss usbmux uuidd www-data)
-zstyle ':completion:*:*:*:users' ignored-patterns $_users_ign
+zstyle ':completion:*:*:*:users' ignored-patterns "$_users_ign[@]"
 unset _users_ign
 
-zstyle ':completion:*:*:(userdel|usermod|gpasswd):*:users' ignored-patterns \
-	'_*'
+zstyle ':completion:*:*:(userdel|usermod|gpasswd):*:users' ignored-patterns '_*'
 
 # Kill format
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
