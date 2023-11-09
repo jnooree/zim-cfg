@@ -62,7 +62,8 @@ zstyle ':completion:*' matcher-list \
 	'm:{[:lower:][:upper:]-}={[:upper:][:lower:]_}' \
 	'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{[:lower:][:upper:]-}={[:upper:][:lower:]_}' \
 	'r:|?=** m:{[:lower:][:upper:]-}={[:upper:][:lower:]_}'
-zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
+zstyle ':completion:*:cd:*' tag-order \
+	local-directories directory-stack path-directories
 
 # Better SSH/Rsync/SCP Autocomplete
 zstyle -a ':completion:*:hosts' hosts _hosts_all
