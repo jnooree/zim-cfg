@@ -65,6 +65,20 @@ zstyle ':completion:*' matcher-list \
 zstyle ':completion:*:cd:*' tag-order \
 	local-directories directory-stack path-directories
 
+_file_ign_patterns=(
+	"*.zwc" "*.old" "*.bak" "*.tmp" "*.swp" "*.save"
+	# Linux specific
+	"*~" ".fuse_hidden*" ".Trash-*" ".nfs*"
+	# macOS specific
+	.DS_Store .DocumentRevisions-V100 .fseventsd .Spotlight-V100 .TemporaryItems
+	.Trashes .VolumeIcon.icns .com.apple.timemachine.donotpresent "Icon?" "._*"
+)
+zstyle ':completion:*:files' ignored-patterns "$_file_ign_patterns[@]"
+zstyle ':completion:*:globbed-files' ignored-patterns "$_file_ign_patterns[@]"
+zstyle ':completion:*:*:(cd|ls|rm|mv|cp|scp):*:files' ignored-patterns
+zstyle ':completion:*:*:(cd|ls|rm|mv|cp|scp):*:globbed-files' ignored-patterns
+unset _file_ign_patterns
+
 # Better SSH/Rsync/SCP Autocomplete
 zstyle -a ':completion:*:hosts' hosts _hosts_all
 if [[ -r /etc/hosts ]]; then
