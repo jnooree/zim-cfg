@@ -126,7 +126,7 @@ export SAVEHIST=100000
 # Add options for less
 export LESS='-RM~gi'
 if [[ -d /run/systemd/system ]]; then
-	export SYSTEMD_LESS="$LESS"
+	export SYSTEMD_LESS="${LESS}s"
 fi
 
 # ls options
