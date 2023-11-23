@@ -8,6 +8,7 @@ setopt cshnullglob extendedglob kshglob numericglobsort rematchpcre
 setopt appendhistory extendedhistory histexpiredupsfirst histfcntllock \
 	histfindnodups histignorealldups histignoredups histignorespace histnostore \
 	histreduceblanks histsavenodups histverify sharehistory
+setopt noclobber nomultifuncdef
 
 autoload -U +X bashcompinit && bashcompinit
 
