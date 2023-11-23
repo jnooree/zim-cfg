@@ -124,12 +124,6 @@ export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=500000
 export SAVEHIST=100000
 
-# Add options for less
-export LESS='-RM~gi'
-if [[ -d /run/systemd/system ]]; then
-	export SYSTEMD_LESS="${LESS}s"
-fi
-
 # ls options
 export QUOTING_STYLE='literal'
 
