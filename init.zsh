@@ -4,13 +4,17 @@
 setopt completeinword noflowcontrol interactivecomments \
 	longlistjobs transientrprompt
 setopt autocd autopushd pushdignoredups pushdminus
-setopt cshnullglob extendedglob kshglob numericglobsort rematchpcre
+setopt cshnullglob extendedglob kshglob numericglobsort
 setopt appendhistory extendedhistory histexpiredupsfirst histfcntllock \
 	histfindnodups histignorealldups histignoredups histignorespace histnostore \
 	histreduceblanks histsavenodups histverify sharehistory
 setopt noclobber nomultifuncdef
 
 autoload -U +X bashcompinit && bashcompinit
+
+if zmodload zsh/pcre 2>/dev/null; then
+	setopt rematchpcre
+fi
 
 # Keybindings
 bindkey "^K" kill-line
