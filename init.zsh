@@ -180,6 +180,7 @@ alias kssh='ssh -O exit'
 alias glogb="git log --oneline --decorate --graph --branches"
 alias gsa="git submodule add"
 alias gcq="git commit --quiet"
+alias grb!="git rebase --autosquash"
 
 if tar --disable-copyfile &>/dev/null; then
 	_tar_alias='tar --disable-copyfile'
